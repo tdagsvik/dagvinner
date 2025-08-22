@@ -386,7 +386,6 @@
         gap: 16px;
       }
     }
-
   </style>
 </head>
 
@@ -445,7 +444,7 @@
       <h2>Bidra med din historie</h2>
       <p>Vi har alle vært ofre for Dags elendige vinnerstil. Del dine opplevelser. #metoo</p>
       <div class="controls">
-        <a id="mailto" class="button primary" href="#">✉️ Send inn på e‑post</a>
+        <a id="mailto" class="button primary" href="mailto:thomasedagsvik@gmail.com">✉️ Send inn på e-post</a>
       </div>
     </div>
   </div>
@@ -641,12 +640,41 @@
       $('#copyLinkBtn').addEventListener('click', () => { copy(currentLink()); $('#copyLinkBtn').textContent = '✅ Lenke kopiert'; setTimeout(() => $('#copyLinkBtn').textContent = '🔗 Kopier lenke', 1500); });
 
       // mailto template
-      const subject = encodeURIComponent('Bidrag til Dagvinner.no');
-      const body = encodeURIComponent($('#template').textContent);
-      const mailto = `mailto:thomasedagsvik@gmail.com?subject=${subject}&body=${body}`;
-      $('#mailto').href = mailto;
-      $('#copyTemplateBtn').addEventListener('click', () => { copy($('#template').textContent); $('#copyTemplateBtn').textContent = '✅ Mal kopiert'; setTimeout(() => $('#copyTemplateBtn').textContent = '📋 Kopier mal', 1500); });
+      // bindings
+      $('#search')?.addEventListener('input', (e) => {
+        state.search = e.target.value; renderStories();
+      });
+      $('#randomBtn')?.addEventListener('click', randomStory);
+      $('#copyLinkBtn')?.addEventListener('click', () => { // finnes ikke nå, men safe med ?.
+        copy(currentLink());
+        const btn = $('#copyLinkBtn');
+        if (btn) {
+          btn.textContent = '✅ Lenke kopiert';
+          setTimeout(() => btn.textContent = '🔗 Kopier lenke', 1500);
+        }
+      });
 
+      // mailto template (robust)
+      const subject = encodeURIComponent('Bidrag til Dagvinner.no');
+      const tmpl = $('#template')?.textContent?.trim() || `Tittel:
+År:
+Kategori(er):
+Historie (2–4 setninger):
+Signatur (valgfritt):`;
+      const body = encodeURIComponent(tmpl);
+      const mailto = `mailto:thomasedagsvik@gmail.com?subject=${subject}&body=${body}`;
+      const mailBtn = $('#mailto');
+      if (mailBtn) mailBtn.href = mailto;
+
+      $('#copyTemplateBtn')?.addEventListener('click', () => {
+        const t = $('#template')?.textContent || tmpl;
+        copy(t);
+        const btn = $('#copyTemplateBtn');
+        if (btn) {
+          btn.textContent = '✅ Mal kopiert';
+          setTimeout(() => btn.textContent = '📋 Kopier mal', 1500);
+        }
+      }); F
       // keyboard: focus search with '/'
       window.addEventListener('keydown', (e) => {
         if (e.key === '/') { e.preventDefault(); $('#search').focus(); }
