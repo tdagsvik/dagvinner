@@ -30,7 +30,7 @@
       --success: #34d399;
       --danger: #ef4444;
     }
-
+    
     /* Light mode */
     @media (prefers-color-scheme: light) {
       :root {
@@ -450,7 +450,7 @@
   </div>
 
   <footer class="container">
-    Laget med ❤️ © <span id="year"></span> Dagvinner.no
+    Laget med ❤️ av Knobben og Dagsvik © <span id="year"></span> Dagvinner.no
   </footer>
 
   <canvas class="confetti" id="confetti" width="0" height="0" aria-hidden="true"></canvas>
@@ -459,9 +459,9 @@
     // --- Data ---
     const STORIES = [
       {
-        id: 1, title: "Kyllingmannen", tags: ["quiz", "vennekveld"], year: 2023,
-        text: "Dag slo Eldri, og spilte inn 5 kyllingvideoer for å plage henne. Dette er én av dem.",
-        video: { src: "assets/videos/kylling1.mp4" }
+        id: 1, title: "Rooster", tags: ["settlers", "video", "roost"], year: 2023,
+        text: "Dag slo Eldri i Settlers, og spilte inn denne filmen. Ikke for å roast, men 'rooste'. Yeah yeah yeah, la la la 🎶",
+        video: { src: "assets/videos/kylling_settlers.mp4" }
       },
     ];
 
@@ -526,12 +526,6 @@
       });
     }
 
-    function rateScore(story) {
-      // En tøysete vurdering 6–11/10
-      const base = 6 + (story.id % 6); // 6..11
-      return base + '/10';
-    }
-
     function storyHTML(s) {
       const tagBadges = s.tags
         .slice(0, 3)
@@ -561,7 +555,6 @@
       <p>${s.text}</p>
       <div class="meta">
         <span>År: ${s.year}</span>
-        <span class="rate" title="Dag sin elendig-vinner-skår"><b>${rateScore(s)}</b> elendig vinner</span>
       </div>
     </article>`;
     }
@@ -593,6 +586,7 @@
       renderTags();
       $('#stories').innerHTML = storyHTML(s);
       $('#emptyState').hidden = true;
+      autoAspectForVideos($('#stories'));
       confetti();
       window.location.hash = '#historier';
     }
