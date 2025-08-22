@@ -1,10 +1,12 @@
 <!doctype html>
 <html lang="no">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Dagvinner.no – småhistorier om en elendig vinner</title>
-  <meta name="description" content="En lett og leken samling småhistorier om hvordan Dag er en elendig vinner. Send inn din historie og stem på favorittene." />
+  <meta name="description"
+    content="En lett og leken samling småhistorier om hvordan Dag er en elendig vinner. Send inn din historie og stem på favorittene." />
   <meta name="theme-color" content="#111827" />
   <meta property="og:title" content="Dagvinner.no – småhistorier om en elendig vinner" />
   <meta property="og:description" content="Lese, le og dele historier om Dags imponerende evner som… elendig vinner." />
@@ -12,12 +14,18 @@
   <meta property="og:image" content="https://dummyimage.com/1200x630/111827/ffffff&text=Dagvinner.no" />
   <style>
     :root {
-      --bg: #0b1220;          /* dyp blåsvart */
-      --panel: #111827;       /* grafitt */
-      --muted: #9ca3af;       /* grå */
-      --text: #f9fafb;        /* nesten hvit */
-      --accent: #22d3ee;      /* cyan */
-      --accent-2: #f59e0b;    /* amber */
+      --bg: #0b1220;
+      /* dyp blåsvart */
+      --panel: #111827;
+      /* grafitt */
+      --muted: #9ca3af;
+      /* grå */
+      --text: #f9fafb;
+      /* nesten hvit */
+      --accent: #22d3ee;
+      /* cyan */
+      --accent-2: #f59e0b;
+      /* amber */
       --ring: rgba(34, 211, 238, .35);
       --success: #34d399;
       --danger: #ef4444;
@@ -36,92 +44,320 @@
       }
     }
 
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0; font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      color: var(--text); background: radial-gradient(1200px 1200px at 10% -5%, rgba(34,211,238,.08), transparent),
-                           radial-gradient(1000px 900px at 100% 0%, rgba(245,158,11,.06), transparent), var(--bg);
+    * {
+      box-sizing: border-box;
     }
 
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    html,
+    body {
+      height: 100%;
+    }
 
-    .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+    body {
+      margin: 0;
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: radial-gradient(1200px 1200px at 10% -5%, rgba(34, 211, 238, .08), transparent),
+        radial-gradient(1000px 900px at 100% 0%, rgba(245, 158, 11, .06), transparent), var(--bg);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px;
+    }
 
     header {
-      position: sticky; top: 0; z-index: 40;
+      position: sticky;
+      top: 0;
+      z-index: 40;
       backdrop-filter: saturate(120%) blur(10px);
       background: color-mix(in oklab, var(--bg) 70%, transparent);
       border-bottom: 1px solid color-mix(in oklab, var(--panel) 70%, transparent);
     }
 
-    .nav { display: flex; align-items: center; gap: 16px; justify-content: space-between; }
-    .logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: .2px; }
-    .logo svg { width: 28px; height: 28px; }
-    .nav a { opacity: .9; }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      justify-content: space-between;
+    }
 
-    .hero { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; align-items: center; padding: 40px 0 8px; }
-    @media (max-width: 860px) { .hero { grid-template-columns: 1fr; padding-top: 18px; } }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: .2px;
+    }
+
+    .logo svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    .nav a {
+      opacity: .9;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 24px;
+      align-items: center;
+      padding: 40px 0 8px;
+    }
+
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 18px;
+      }
+    }
 
     .card {
       background: linear-gradient(180deg, color-mix(in oklab, var(--panel) 88%, transparent) 0%, var(--panel) 100%);
       border: 1px solid color-mix(in oklab, var(--panel) 85%, transparent);
-      border-radius: 16px; padding: 18px 18px 20px; box-shadow: 0 10px 30px rgba(0,0,0,.2);
+      border-radius: 16px;
+      padding: 18px 18px 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
     }
 
-    h1 { font-size: clamp(28px, 5vw, 42px); margin: 0 0 10px; line-height: 1.15; }
-    h2 { font-size: clamp(22px, 3.2vw, 28px); margin: 20px 0 10px; }
-    p.lead { font-size: 18px; color: var(--muted); margin-top: 0; }
+    h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
 
-    .filters { display: grid; grid-template-columns: 1fr; gap: 12px; }
-    .controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    h2 {
+      font-size: clamp(22px, 3.2vw, 28px);
+      margin: 20px 0 10px;
+    }
 
-    .input, .button, .chip {
+    p.lead {
+      font-size: 18px;
+      color: var(--muted);
+      margin-top: 0;
+    }
+
+    .filters {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .input,
+    .button,
+    .chip {
       border: 1px solid color-mix(in oklab, var(--panel) 75%, transparent);
       background: color-mix(in oklab, var(--panel) 90%, transparent);
-      color: var(--text); border-radius: 999px; padding: 10px 14px; outline: none;
+      color: var(--text);
+      border-radius: 999px;
+      padding: 10px 14px;
+      outline: none;
     }
-    .input:focus { box-shadow: 0 0 0 6px var(--ring); border-color: var(--accent); }
 
-    .button { cursor: pointer; font-weight: 600; }
-    .button.primary { background: linear-gradient(135deg, var(--accent), color-mix(in oklab, var(--accent) 60%, var(--accent-2))); border-color: transparent; color: #001018; }
-    .button.ghost { background: transparent; }
+    .input:focus {
+      box-shadow: 0 0 0 6px var(--ring);
+      border-color: var(--accent);
+    }
 
-    .stories { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; margin-top: 18px; }
-    @media (max-width: 1000px) { .stories { grid-template-columns: repeat(2, minmax(0,1fr)); } }
-    @media (max-width: 640px) { .stories { grid-template-columns: 1fr; } }
+    .button {
+      cursor: pointer;
+      font-weight: 600;
+    }
 
-    .story { position: relative; overflow: clip; }
-    .story-header { display: flex; align-items: center; gap: 10px; }
-    .tag { font-size: 12px; color: var(--muted); background: color-mix(in oklab, var(--panel) 80%, transparent); border: 1px solid color-mix(in oklab, var(--panel) 70%, transparent); padding: 4px 8px; border-radius: 999px; }
-    .story h3 { margin: 10px 0 6px; font-size: 18px; }
-    .story p { margin: 0 0 12px; color: color-mix(in oklab, var(--text) 85%, #fff 0%); }
+    .button.primary {
+      background: linear-gradient(135deg, var(--accent), color-mix(in oklab, var(--accent) 60%, var(--accent-2)));
+      border-color: transparent;
+      color: #001018;
+    }
 
-    .meta { display: flex; gap: 10px; align-items: center; justify-content: space-between; color: var(--muted); font-size: 13px; }
-    .rate { display: inline-flex; align-items: center; gap: 6px; }
-    .rate b { color: var(--accent-2); }
+    .button.ghost {
+      background: transparent;
+    }
 
-    .empty { text-align: center; color: var(--muted); padding: 30px 6px; }
+    .stories {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
 
-    footer { margin: 36px 0 24px; color: var(--muted); text-align: center; }
+    @media (max-width: 1000px) {
+      .stories {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
 
-    .divider { height: 1px; background: color-mix(in oklab, var(--panel) 70%, transparent); margin: 12px 0; border-radius: 999px; }
+    @media (max-width: 640px) {
+      .stories {
+        grid-template-columns: 1fr;
+      }
+    }
 
-    .kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 12px; padding: 2px 6px; border-radius: 6px; border: 1px solid color-mix(in oklab, var(--panel) 75%, transparent); background: color-mix(in oklab, var(--panel) 90%, transparent); }
+    .story {
+      position: relative;
+      overflow: clip;
+    }
+
+    .story-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .tag {
+      font-size: 12px;
+      color: var(--muted);
+      background: color-mix(in oklab, var(--panel) 80%, transparent);
+      border: 1px solid color-mix(in oklab, var(--panel) 70%, transparent);
+      padding: 4px 8px;
+      border-radius: 999px;
+    }
+
+    .story h3 {
+      margin: 10px 0 6px;
+      font-size: 18px;
+    }
+
+    .story p {
+      margin: 0 0 12px;
+      color: color-mix(in oklab, var(--text) 85%, #fff 0%);
+    }
+
+    .meta {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .rate {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .rate b {
+      color: var(--accent-2);
+    }
+
+    .empty {
+      text-align: center;
+      color: var(--muted);
+      padding: 30px 6px;
+    }
+
+    footer {
+      margin: 36px 0 24px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .divider {
+      height: 1px;
+      background: color-mix(in oklab, var(--panel) 70%, transparent);
+      margin: 12px 0;
+      border-radius: 999px;
+    }
+
+    .kbd {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 6px;
+      border: 1px solid color-mix(in oklab, var(--panel) 75%, transparent);
+      background: color-mix(in oklab, var(--panel) 90%, transparent);
+    }
 
     /* tiny confetti for the "tilfeldig" knapp */
-    .confetti { position: fixed; inset: 0; pointer-events: none; }
+    .confetti {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    /* media */
+    .media {
+      position: relative;
+      overflow: hidden;
+      border-radius: 14px;
+      border: 1px solid color-mix(in oklab, var(--panel) 75%, transparent);
+      background: color-mix(in oklab, var(--panel) 85%, transparent);
+      aspect-ratio: 16/9;
+      margin-bottom: 10px;
+    }
+
+    .media img,
+    .media video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .media video {
+      background: #000;
+    }
+
+    /* vis hele media uten cropping ved portrett */
+    .media[data-fit="contain"] img,
+    .media[data-fit="contain"] video {
+      object-fit: contain;
+      background: #000;
+      /* letterboxing */
+    }
+
+    /* juster aspektforhold dynamisk */
+    .media[data-ratio="9/16"] {
+      aspect-ratio: 9/16;
+    }
+
+    .media[data-ratio="16/9"] {
+      aspect-ratio: 16/9;
+    }
+
+    /* valgfritt, eksplisitt */
+    .media[data-ratio="1/1"] {
+      aspect-ratio: 1/1;
+    }
+
+    /* hvis du vil støtte kvadrat */
+    .media[data-ratio="auto"] {
+      aspect-ratio: auto;
+    }
+
+    /* naturlig høyde */
   </style>
 </head>
+
 <body>
   <header>
     <div class="container nav">
       <a class="logo" href="#" aria-label="Dagvinner.no hjem">
         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M6 3h12v4a6 6 0 1 1-12 0V3Z" stroke="currentColor" stroke-width="1.5"/>
-          <path d="M6 7c0 3.314 2.686 6 6 6s6-2.686 6-6" stroke="currentColor" stroke-width="1.5"/>
-          <path d="M6 13h12v3a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3v-3Z" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M6 3h12v4a6 6 0 1 1-12 0V3Z" stroke="currentColor" stroke-width="1.5" />
+          <path d="M6 7c0 3.314 2.686 6 6 6s6-2.686 6-6" stroke="currentColor" stroke-width="1.5" />
+          <path d="M6 13h12v3a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3v-3Z" stroke="currentColor" stroke-width="1.5" />
         </svg>
         <span>Dagvinner<span style="opacity:.6">.no</span></span>
       </a>
@@ -136,7 +372,8 @@
   <div class="container hero">
     <div>
       <h1>Dag er en <em>elendig</em> vinner</h1>
-      <p class="lead">Her samler vi små øyeblikk av stor sportsånd… som gikk litt galt. Bla i historier, trekk en tilfeldig, eller send inn din egen.</p>
+      <p class="lead">Her samler vi små øyeblikk av stor sportsånd… som gikk litt galt. Bla i historier, trekk en
+        tilfeldig, eller send inn din egen.</p>
       <div class="controls" style="margin-top:12px">
         <button class="button primary" id="randomBtn" aria-label="Vis en tilfeldig historie">🎲 Vis tilfeldig</button>
         <button class="button ghost" id="copyLinkBtn" aria-label="Kopier delingslenke">🔗 Kopier lenke</button>
@@ -161,13 +398,17 @@
 
   <div class="container" id="historier">
     <div class="stories" id="stories"></div>
-    <p class="empty" id="emptyState" hidden>Ingen historier matcher søket. Prøv et annet ord eller fjern noen filtre.</p>
+    <p class="empty" id="emptyState" hidden>Ingen historier matcher søket. Prøv et annet ord eller fjern noen filtre.
+    </p>
   </div>
 
   <div class="container">
     <div class="card" id="om">
       <h2>Om Dagvinner.no</h2>
-      <p>Dette er en vennlig, lett og helt uhøytidelig samling av korte historier om Dag – en fyr som oftest vinner <em>litt for hardt</em>. Alt er skrevet med glimt i øyet, og målgruppen er først og fremst Dag og vennene hans. 🏆</p>
+      <p>Dette er en vennlig, lett og helt uhøytidelig samling av korte historier om Dag – en fyr som oftest vinner
+        <em>litt for hardt</em>. Alt er skrevet med glimt i øyet, og målgruppen er først og fremst Dag og vennene hans.
+        🏆
+      </p>
       <div class="divider"></div>
       <p style="margin:0">Ingen annonser, ingen sporing, bare moro. Vil du bidra? Se under.</p>
     </div>
@@ -176,15 +417,19 @@
   <div class="container" id="bidra">
     <div class="card">
       <h2>Bidra med din historie</h2>
-      <p>Har du vært vitne til en makeløs seiersdans? En episk «jeg sa jo det»-monolog? Send inn din mikro-historie (2–4 setninger), gjerne med kategori og årstall.</p>
+      <p>Har du vært vitne til en makeløs seiersdans? En episk «jeg sa jo det»-monolog? Send inn din mikro-historie (2–4
+        setninger), gjerne med kategori og årstall.</p>
       <div class="controls">
         <a id="mailto" class="button primary" href="#">✉️ Send inn på e‑post</a>
         <button class="button" id="copyTemplateBtn">📋 Kopier mal</button>
       </div>
-      <p style="margin:.6rem 0 0; color:var(--muted); font-size:14px">Tips: Bruk mal-knappen for en ferdig utfylt start.</p>
-      <pre id="template" style="margin-top:10px; white-space:pre-wrap; background:transparent; border:1px dashed color-mix(in oklab, var(--panel) 70%, transparent); padding:12px; border-radius:12px">Tittel: 
+      <p style="margin:.6rem 0 0; color:var(--muted); font-size:14px">Tips: Bruk mal-knappen for en ferdig utfylt start.
+      </p>
+      <pre id="template"
+        style="margin-top:10px; white-space:pre-wrap; background:transparent; border:1px dashed color-mix(in oklab, var(--panel) 70%, transparent); padding:12px; border-radius:12px">Tittel: 
 År: 
 Kategori(er): 
+Media: (lenke/filnavn i assets/ …)
 Historie (2–4 setninger): 
 Signatur (valgfritt): </pre>
     </div>
@@ -199,54 +444,11 @@ Signatur (valgfritt): </pre>
   <script>
     // --- Data ---
     const STORIES = [
-      { id: 1,  title: "Quizkongen", tags: ["quiz","vennekveld"], year: 2023,
-        text: "Dag drar i land seieren på quiz – og leser så opp hele Wikipedia-artikkelen om temaet ingen spurte om." },
-      { id: 2,  title: "FIFA-pause for reprise", tags: ["spill","fifa"], year: 2022,
-        text: "Etter et heldig mål trykker Dag pause for å vise reprisen i sakte film. Tre ganger." },
-      { id: 3,  title: "Sjakkmatt og masterclass", tags: ["spill","sjakk"], year: 2021,
-        text: "Setter matt og kaller det en ‘klassisk to-trinns-omvending’, som om resten av oss gikk glipp av sjakkakademiet." },
-      { id: 4,  title: "Wordfeud-essayet", tags: ["spill","ord"], year: 2020,
-        text: "Legger ‘QI’ på trippel og leverer deretter et lite foredrag om gyldige tobokstaversord." },
-      { id: 5,  title: "Ludo-selfien", tags: ["brettspill","familie"], year: 2019,
-        text: "Vinner i Ludo og foreslår ‘seiers-selfie’ med barna som statister." },
-      { id: 6,  title: "Kubb-kontoret", tags: ["hagelek","sommer"], year: 2018,
-        text: "Kaller hagen for ‘kontoret’ etter å ha felt kongen på første kast – og tilbyr ‘konsulenttimer’." },
-      { id: 7,  title: "Bordtennis-terminologi", tags: ["sport","bordtennis"], year: 2024,
-        text: "Roper ‘det heter bordTENNIS’ etter nettrull, som om slaget var planlagt av NASA." },
-      { id: 8,  title: "Pokerprofeten", tags: ["spill","poker"], year: 2017,
-        text: "Vinner med ren flaks og starter umiddelbart et kurs i ‘range construction’." },
-      { id: 9,  title: "Stravaseier", tags: ["sport","sykkel"], year: 2024,
-        text: "Får KOM i en nedoverbakke med medvind og sier ‘form er form’." },
-      { id: 10, title: "Vinlotteri-takketalen", tags: ["jobb","vinlotteri"], year: 2023,
-        text: "Drar en takketale for vinlotteriet som om han vant æres-Oscar." },
-      { id: 11, title: "Bowling og buer", tags: ["sport","bowling"], year: 2016,
-        text: "Tar en strike, bukker to ganger og demonstrerer ‘banens naturlige krumning’." },
-      { id: 12, title: "Trivial Pursuit-triumf", tags: ["brettspill","vennekveld"], year: 2015,
-        text: "Setter siste brikke og foreslår at vi ‘tar en runde på læringspunkter’." },
-      { id: 13, title: "Minigolf-matematikeren", tags: ["sommer","minigolf"], year: 2019,
-        text: "Regner ut vinkel og friksjon på minigolfbanen og erklærer det ‘ren fysikk’." },
-      { id: 14, title: "Kahoot-krøll", tags: ["quiz","jobb"], year: 2020,
-        text: "Vinner firmakahoot og foreslår at alle andre slår på ‘læringsmodus’." },
-      { id: 15, title: "Stigespill-statistikeren", tags: ["brettspill","familie"], year: 2018,
-        text: "Havner på stige og tar æren med setningen ‘statistikk favoriserer de forberedte’." },
-      { id: 16, title: "Skirenn i sludd", tags: ["sport","ski"], year: 2021,
-        text: "Glir først over mål i sludd og gir skiene kallenavn på prisutdelingen hjemme." },
-      { id: 17, title: "Bingo-benchmark", tags: ["spill","bingo"], year: 2017,
-        text: "Roper BINGO og hevder strategien var ‘lav-latens kryssjekk av tall’." },
-      { id: 18, title: "Yatzy-yoga", tags: ["brettspill","vennekveld"], year: 2016,
-        text: "Tar yatzy og holder så en stillferdig meditasjon for ‘fokus’. I fem minutter." },
-      { id: 19, title: "Mario Kart-manus", tags: ["spill","mario"], year: 2014,
-        text: "Vinner med blåskall og sier ‘det var taktisk kapitalallokering av items’." },
-      { id: 20, title: "Tipping på overtid", tags: ["sport","fotball"], year: 2013,
-        text: "Får 12 rette etter mål på overtid og tar æren ‘på forventet xG’." },
-      { id: 21, title: "Scrabble-skolen", tags: ["spill","ord"], year: 2022,
-        text: "Bygger ‘ZLOTY’ og holder innlegg om valutaens etymologi." },
-      { id: 22, title: "Hesteskokongen", tags: ["sommer","hagelek"], year: 2012,
-        text: "Treffer på første forsøk og spør om noen ‘ønsker en clinic’." },
-      { id: 23, title: "Dart-diskurs", tags: ["pub","dart"], year: 2018,
-        text: "Setter dobbel 16 og åpner en diskusjon om piltens aerodynamikk." },
-      { id: 24, title: "Kahoot 2: Oppfølgeren", tags: ["quiz","vennekveld"], year: 2024,
-        text: "Bytter til username ‘Dag (vær så god)’ før finalerunden." },
+      {
+        id: 1, title: "Kyllingmannen", tags: ["quiz", "vennekveld"], year: 2023,
+        text: "Dag slo Eldri, og spilte inn 5 kyllingvideoer for å plage henne. Dette er én av dem.",
+        video: { src: "assets/videos/kylling1.mp4" }
+      },
     ];
 
     const TAGS = [
@@ -265,12 +467,18 @@ Signatur (valgfritt): </pre>
     ];
 
     // --- Helpers ---
-    const $ = (sel, el=document) => el.querySelector(sel);
-    const $$ = (sel, el=document) => Array.from(el.querySelectorAll(sel));
+    const $ = (sel, el = document) => el.querySelector(sel);
+    const $$ = (sel, el = document) => Array.from(el.querySelectorAll(sel));
     const state = {
       search: '',
       tag: 'alle'
     };
+    // Base path for assets so it works on both GitHub Pages project sites and custom domain
+    const isGithub = location.hostname.endsWith('github.io');
+    const isFile = location.protocol === 'file:';
+    const BASE = isFile
+      ? './'                                  // når du åpner index direkte
+      : (isGithub ? `/${location.pathname.split('/')[1]}/` : '/');
 
     function renderTags() {
       const wrap = $('#tags');
@@ -291,6 +499,19 @@ Signatur (valgfritt): </pre>
       });
     }
 
+    function autoAspectForVideos(scope = document) {
+      scope.querySelectorAll('video').forEach(v => {
+        v.addEventListener('loadedmetadata', () => {
+          const wrap = v.closest('.media');
+          if (!wrap) return;
+          const isLandscape = v.videoWidth >= v.videoHeight;
+          wrap.dataset.ratio = isLandscape ? '16/9' : '9/16';
+          // hvis portrett: bruk contain som default
+          if (!isLandscape && !wrap.dataset.fit) wrap.dataset.fit = 'contain';
+        }, { once: true });
+      });
+    }
+
     function rateScore(story) {
       // En tøysete vurdering 6–11/10
       const base = 6 + (story.id % 6); // 6..11
@@ -298,18 +519,39 @@ Signatur (valgfritt): </pre>
     }
 
     function storyHTML(s) {
-      const tagBadges = s.tags.slice(0,3).map(t => `<span class="tag">${t}</span>`).join(' ');
+      const tagBadges = s.tags
+        .slice(0, 3)
+        .map(t => `<span class="tag">${t}</span>`)
+        .join(' ');
+
+      const mediaHTML = s.video
+        ? `
+      <div class="media">
+        <video controls preload="metadata" ${s.video.poster ? `poster="${BASE}${s.video.poster}"` : ''}>
+          <source src="${BASE}${s.video.src}" type="video/mp4">
+          Din nettleser støtter ikke video-taggen.
+        </video>
+      </div>`
+        : s.img
+          ? `
+      <div class="media">
+        <img src="${BASE}${s.img}" alt="${s.imgAlt || s.title}" loading="lazy" decoding="async">
+      </div>`
+          : '';
+
       return `
-        <article class="card story" tabindex="0" aria-labelledby="s-${s.id}-title">
-          <div class="story-header">${tagBadges}</div>
-          <h3 id="s-${s.id}-title">${s.title}</h3>
-          <p>${s.text}</p>
-          <div class="meta">
-            <span>År: ${s.year}</span>
-            <span class="rate" title="Dag sin elendig-vinner-skår"><b>${rateScore(s)}</b> elendig vinner</span>
-          </div>
-        </article>`;
+    <article class="card story" tabindex="0" aria-labelledby="s-${s.id}-title">
+      <div class="story-header">${tagBadges}</div>
+      ${mediaHTML}
+      <h3 id="s-${s.id}-title">${s.title}</h3>
+      <p>${s.text}</p>
+      <div class="meta">
+        <span>År: ${s.year}</span>
+        <span class="rate" title="Dag sin elendig-vinner-skår"><b>${rateScore(s)}</b> elendig vinner</span>
+      </div>
+    </article>`;
     }
+
 
     function matches(s) {
       const q = state.search.trim().toLowerCase();
@@ -318,12 +560,13 @@ Signatur (valgfritt): </pre>
       return inTag && inText;
     }
 
-    function renderStories(scrollToTop=false) {
+    function renderStories(scrollToTop = false) {
       const grid = $('#stories');
       const items = STORIES.filter(matches);
       grid.innerHTML = items.map(storyHTML).join('');
       $('#emptyState').hidden = items.length !== 0;
       if (scrollToTop) window.scrollTo({ top: grid.offsetTop - 60, behavior: 'smooth' });
+      autoAspectForVideos($('#stories'));
     }
 
     function randomStory() {
@@ -347,19 +590,19 @@ Signatur (valgfritt): </pre>
       const W = c.width = window.innerWidth;
       const H = c.height = window.innerHeight;
       const n = 80;
-      const pieces = Array.from({length: n}, () => ({
-        x: Math.random()*W, y: -20, r: 4+Math.random()*6, vy: 2+Math.random()*3, vx: (Math.random()-.5)*2
+      const pieces = Array.from({ length: n }, () => ({
+        x: Math.random() * W, y: -20, r: 4 + Math.random() * 6, vy: 2 + Math.random() * 3, vx: (Math.random() - .5) * 2
       }));
       let tick = 0;
       function frame() {
-        ctx.clearRect(0,0,W,H);
+        ctx.clearRect(0, 0, W, H);
         ctx.globalAlpha = .9;
-        ctx.fillStyle = ['#22d3ee','#f59e0b','#34d399','#ef4444'][tick%4];
+        ctx.fillStyle = ['#22d3ee', '#f59e0b', '#34d399', '#ef4444'][tick % 4];
         for (const p of pieces) {
-          ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
-          p.y += p.vy; p.x += p.vx; if (p.y > H+20) p.y = -10;
+          ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
+          p.y += p.vy; p.x += p.vx; if (p.y > H + 20) p.y = -10;
         }
-        tick++; if (tick < 120) requestAnimationFrame(frame); else ctx.clearRect(0,0,W,H);
+        tick++; if (tick < 120) requestAnimationFrame(frame); else ctx.clearRect(0, 0, W, H);
       }
       frame();
     }
@@ -369,11 +612,12 @@ Signatur (valgfritt): </pre>
     function currentLink() { return location.origin + location.pathname + '#historier'; }
 
     // --- Init ---
-    (function init(){
+    (function init() {
       // restore tag
       state.tag = localStorage.getItem('dagvinner.tag') || 'alle';
       renderTags();
       renderStories();
+      autoAspectForVideos(document);
       $('#year').textContent = new Date().getFullYear();
 
       // bindings
@@ -395,4 +639,5 @@ Signatur (valgfritt): </pre>
     })();
   </script>
 </body>
+
 </html>
