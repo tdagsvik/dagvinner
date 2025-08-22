@@ -363,7 +363,6 @@
       </a>
       <nav class="controls">
         <a href="#historier">Historier</a>
-        <a href="#om">Om</a>
         <a href="#bidra">Bidra</a>
       </nav>
     </div>
@@ -372,17 +371,15 @@
   <div class="container hero">
     <div>
       <h1>Dag er en <em>elendig</em> vinner</h1>
-      <p class="lead">Her samler vi små øyeblikk av stor sportsånd… som gikk litt galt. Bla i historier, trekk en
+      <p class="lead">Her samler vi små øyeblikk av stor sportsånd… Bla i historier, trekk en
         tilfeldig, eller send inn din egen.</p>
       <div class="controls" style="margin-top:12px">
         <button class="button primary" id="randomBtn" aria-label="Vis en tilfeldig historie">🎲 Vis tilfeldig</button>
-        <button class="button ghost" id="copyLinkBtn" aria-label="Kopier delingslenke">🔗 Kopier lenke</button>
-        <span class="kbd" title="Hurtigtast">/</span><span style="color:var(--muted)"> for søk</span>
       </div>
     </div>
 
     <div class="card" id="filtersCard" aria-labelledby="filtersHeading">
-      <h2 id="filtersHeading" style="margin-top:4px">Finn riktig type dårlig vinnerværemåte</h2>
+      <h2 id="filtersHeading" style="margin-top:4px">Finn historie</h2>
       <div class="filters">
         <label>
           <span style="display:block; font-weight:600; margin-bottom:6px">Søk</span>
@@ -402,41 +399,19 @@
     </p>
   </div>
 
-  <div class="container">
-    <div class="card" id="om">
-      <h2>Om Dagvinner.no</h2>
-      <p>Dette er en vennlig, lett og helt uhøytidelig samling av korte historier om Dag – en fyr som oftest vinner
-        <em>litt for hardt</em>. Alt er skrevet med glimt i øyet, og målgruppen er først og fremst Dag og vennene hans.
-        🏆
-      </p>
-      <div class="divider"></div>
-      <p style="margin:0">Ingen annonser, ingen sporing, bare moro. Vil du bidra? Se under.</p>
-    </div>
-  </div>
 
   <div class="container" id="bidra">
     <div class="card">
       <h2>Bidra med din historie</h2>
-      <p>Har du vært vitne til en makeløs seiersdans? En episk «jeg sa jo det»-monolog? Send inn din mikro-historie (2–4
-        setninger), gjerne med kategori og årstall.</p>
+      <p>Vi har alle vært ofre for Dags elendige vinnerstil. Del dine opplevelser. #metoo</p>
       <div class="controls">
         <a id="mailto" class="button primary" href="#">✉️ Send inn på e‑post</a>
-        <button class="button" id="copyTemplateBtn">📋 Kopier mal</button>
       </div>
-      <p style="margin:.6rem 0 0; color:var(--muted); font-size:14px">Tips: Bruk mal-knappen for en ferdig utfylt start.
-      </p>
-      <pre id="template"
-        style="margin-top:10px; white-space:pre-wrap; background:transparent; border:1px dashed color-mix(in oklab, var(--panel) 70%, transparent); padding:12px; border-radius:12px">Tittel: 
-År: 
-Kategori(er): 
-Media: (lenke/filnavn i assets/ …)
-Historie (2–4 setninger): 
-Signatur (valgfritt): </pre>
     </div>
   </div>
 
   <footer class="container">
-    Laget med ❤️ for vennskapelig erting. © <span id="year"></span> Dagvinner.no
+    Laget med ❤️ © <span id="year"></span> Dagvinner.no
   </footer>
 
   <canvas class="confetti" id="confetti" width="0" height="0" aria-hidden="true"></canvas>
