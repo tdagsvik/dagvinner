@@ -418,16 +418,10 @@
     </div>
 
     <div class="card" id="filtersCard" aria-labelledby="filtersHeading">
-      <h2 id="filtersHeading" style="margin-top:4px">Finn historie</h2>
       <div class="filters">
         <label>
-          <span style="display:block; font-weight:600; margin-bottom:6px">Søk</span>
-          <input id="search" class="input" type="search" placeholder="Søk i historier (f.eks. sjakk, fifa, quiz)" />
+          <input id="search" class="input" type="search" placeholder="Søk i historier" />
         </label>
-        <div>
-          <span style="display:block; font-weight:600; margin-bottom:6px">Kategorier</span>
-          <div class="controls" id="tags"></div>
-        </div>
       </div>
     </div>
   </div>
@@ -632,14 +626,17 @@
     </article>`;
     }
 
-
+    /*
     function matches(s) {
       const q = state.search.trim().toLowerCase();
       const inTag = state.tag === 'alle' || s.tags.includes(state.tag);
       const inText = !q || (s.title + ' ' + s.text + ' ' + s.tags.join(' ')).toLowerCase().includes(q);
       return inTag && inText;
-    }
+    }*/
 
+    function matches(_) { return true; }
+
+    /*
     function renderStories(scrollToTop = false) {
       const grid = $('#stories');
       const items = STORIES.filter(matches);
@@ -647,8 +644,30 @@
       $('#emptyState').hidden = items.length !== 0;
       if (scrollToTop) window.scrollTo({ top: grid.offsetTop - 60, behavior: 'smooth' });
       autoAspect($('#stories'));
+    }*/
+
+    function renderStories(scrollToTop = false) {
+      const grid = $('#stories');
+      const items = STORIES;                 // ikke filter
+      grid.innerHTML = items.map(storyHTML).join('');
+      $('#emptyState').hidden = true;
+      if (scrollToTop) window.scrollTo({ top: grid.offsetTop - 60, behavior: 'smooth' });
+      autoAspect(grid);
     }
 
+    
+    function randomStory() {
+      const pool = STORIES;           // ikke filter
+      if (!pool.length) return;
+      const s = pool[Math.floor(Math.random() * pool.length)];
+      $('#stories').innerHTML = storyHTML(s);
+      $('#emptyState').hidden = true;
+      autoAspect($('#stories'));
+      confetti();
+      window.location.hash = '#historier';
+    }
+
+    /*
     function randomStory() {
       const pool = STORIES.filter(matches);
       if (!pool.length) return;
@@ -662,7 +681,7 @@
       autoAspect($('#stories'));
       confetti();
       window.location.hash = '#historier';
-    }
+    }*/
 
     // --- Confetti (superenkel) ---
     function confetti() {
@@ -696,15 +715,15 @@
     (function init() {
       // restore tag
       state.tag = localStorage.getItem('dagvinner.tag') || 'alle';
-      renderTags();
+      //renderTags();
       renderStories();
       autoAspect(document);
       $('#year').textContent = new Date().getFullYear();
 
       // bindings
-      $('#search').addEventListener('input', (e) => { state.search = e.target.value; renderStories(); });
+      //$('#search').addEventListener('input', (e) => { state.search = e.target.value; renderStories(); });
       $('#randomBtn').addEventListener('click', randomStory);
-      $('#copyLinkBtn').addEventListener('click', () => { copy(currentLink()); $('#copyLinkBtn').textContent = '✅ Lenke kopiert'; setTimeout(() => $('#copyLinkBtn').textContent = '🔗 Kopier lenke', 1500); });
+      //$('#copyLinkBtn').addEventListener('click', () => { copy(currentLink()); $('#copyLinkBtn').textContent = '✅ Lenke kopiert'; setTimeout(() => $('#copyLinkBtn').textContent = '🔗 Kopier lenke', 1500); });
 
       // mailto template
       // bindings
@@ -741,7 +760,7 @@ Signatur (valgfritt):`;
           btn.textContent = '✅ Mal kopiert';
           setTimeout(() => btn.textContent = '📋 Kopier mal', 1500);
         }
-      }); F
+      });
       // keyboard: focus search with '/'
       window.addEventListener('keydown', (e) => {
         if (e.key === '/') { e.preventDefault(); $('#search').focus(); }
