@@ -30,7 +30,7 @@
       --success: #34d399;
       --danger: #ef4444;
     }
-    
+
     /* Light mode */
     @media (prefers-color-scheme: light) {
       :root {
@@ -502,9 +502,30 @@
         video: { src: "assets/videos/lolschool.mp4" }
       },
       {
-        id: 11, title: "Ez ez ez", tags: ["lol", "sang", "gaming"], year: 2024,
-        text: "Dag slår Smaamo i Leage of Legends og en mobbesang med AI.",
+        id: 11, title: "Eazy peazy", tags: ["lol", "sang", "gaming"], year: 2024,
+        text: "Dag slår Smaamo i Leage of Legends",
         video: { src: "assets/videos/ez.mp4" }
+      },
+      {
+        id: 12, title: "Look at the stats", tags: ["dota", "snapchat", "gaming"], year: 2024,
+        text: "Dag henger ut en kompis som har tapt i dota.",
+        video: { src: "assets/videos/dota.mp4" }
+      },
+      {
+        id: 13,
+        title: "Happy fantasy",
+        tags: ["fantasy", "pl", "bursdag"],
+        year: 2023,
+        text: "Dag sin bursdagshilsen til Smaamo, som tydelig viser at han har slått ham i Premier League Fantasy.",
+        img: "assets/images/fantasy.png",
+      },
+      {
+        id: 13,
+        title: "Ez ez ez",
+        tags: ["lol", "sang", "gaming"],
+        year: 2024,
+        text: "Dag har laget en en mobbbesang om hvor dårlige alle vennene er i League of Legends.",
+        video: { src: "assets/videos/ez_song.mp4" }
       },
     ];
 
@@ -552,16 +573,29 @@
       });
     }
 
-    function autoAspectForVideos(scope = document) {
+    function autoAspect(scope = document) {
+      // VIDEO
       scope.querySelectorAll('video').forEach(v => {
         v.addEventListener('loadedmetadata', () => {
           const wrap = v.closest('.media');
           if (!wrap) return;
           const isLandscape = v.videoWidth >= v.videoHeight;
-          wrap.dataset.ratio = isLandscape ? '16/9' : '9/16';
-          // hvis portrett: bruk contain som default
+          if (!wrap.dataset.ratio) wrap.dataset.ratio = isLandscape ? '16/9' : '9/16';
           if (!isLandscape && !wrap.dataset.fit) wrap.dataset.fit = 'contain';
         }, { once: true });
+      });
+
+      // BILDE
+      scope.querySelectorAll('.media img').forEach(img => {
+        const apply = () => {
+          const wrap = img.closest('.media');
+          if (!wrap) return;
+          const isLandscape = img.naturalWidth >= img.naturalHeight;
+          if (!wrap.dataset.ratio) wrap.dataset.ratio = isLandscape ? '16/9' : '9/16';
+          if (!isLandscape && !wrap.dataset.fit) wrap.dataset.fit = 'contain';
+        };
+        if (img.complete) apply();
+        else img.addEventListener('load', apply, { once: true });
       });
     }
 
@@ -612,7 +646,7 @@
       grid.innerHTML = items.map(storyHTML).join('');
       $('#emptyState').hidden = items.length !== 0;
       if (scrollToTop) window.scrollTo({ top: grid.offsetTop - 60, behavior: 'smooth' });
-      autoAspectForVideos($('#stories'));
+      autoAspect($('#stories'));
     }
 
     function randomStory() {
@@ -625,7 +659,7 @@
       renderTags();
       $('#stories').innerHTML = storyHTML(s);
       $('#emptyState').hidden = true;
-      autoAspectForVideos($('#stories'));
+      autoAspect($('#stories'));
       confetti();
       window.location.hash = '#historier';
     }
@@ -664,7 +698,7 @@
       state.tag = localStorage.getItem('dagvinner.tag') || 'alle';
       renderTags();
       renderStories();
-      autoAspectForVideos(document);
+      autoAspect(document);
       $('#year').textContent = new Date().getFullYear();
 
       // bindings
